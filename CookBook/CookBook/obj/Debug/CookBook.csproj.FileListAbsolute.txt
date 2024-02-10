@@ -1,0 +1,12 @@
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\obj\Debug\CookBook.csproj.AssemblyReference.cache
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\obj\Debug\CookBook.FormMain.resources
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\obj\Debug\CookBook.Properties.Resources.resources
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\obj\Debug\CookBook.csproj.GenerateResource.cache
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\obj\Debug\CookBook.csproj.CoreCompileInputs.cache
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\bin\Debug\CookBook.mdf
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\bin\Debug\CookBook_log.ldf
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\bin\Debug\CookBook.exe.config
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\bin\Debug\CookBook.exe
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\bin\Debug\CookBook.pdb
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\obj\Debug\CookBook.exe
+C:\Users\Tom\Documents\GithubRepos\C-Sharp\CookBook\CookBook\obj\Debug\CookBook.pdb
