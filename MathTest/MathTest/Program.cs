@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Runtime.InteropServices;
 
 class Program
@@ -71,8 +72,9 @@ class Program
                 case '*':
                     return num1 * num2;
                 case '/':
-                    //assumption is that values are between 1 and 50
-                    return num1 / num2;
+                    // Assumption is that values are between 1 and 50
+                    // Rounded to two demical places
+                    return Math.Round(num1 / num2, 2);
                 default:
                     throw new ArgumentException("Invalid operator");
             }
@@ -81,22 +83,85 @@ class Program
     static void Main(string[] args)
     {
 
-        // Input three numbers
-        Console.WriteLine("Enter three numbers:");
-        int num1 = Convert.ToInt32(Console.ReadLine());
-        int num2 = Convert.ToInt32(Console.ReadLine());
-        int num3 = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Welcome to the Math Test!");
+        Console.Write("Please enter your name: ");
+        string studentName = Console.ReadLine();
 
-        // Input two operations (+, -, *, /)
-        Console.WriteLine("Enter two operations (+, -, *, /):");
-        char op1 = Convert.ToChar(Console.ReadLine());
-        char op2 = Convert.ToChar(Console.ReadLine());
+        Random random = new Random();
+        char[] operators = { '+', '-', '*', '/' };
 
-        Question question1 = new Question(num1,op1,num2);
-        Console.WriteLine(question1.Result);
+        //First 10 basic questions
+        Stack<Question> EasyQuestions = new Stack<Question>();
+        for (int i = 0; i < 10; i++)
+        {
+            int num1 = random.Next(1, 51);
+            int num2 = random.Next(1, 51);
+            char op = operators[random.Next(0, 4)];
+            EasyQuestions.Push(new Question(num1,op,num2));
+        }
 
-        Question question2 = new Question(num1, op1, num2, op2, num3);
-        Console.WriteLine(question2.Result);
+        AskQuestions(EasyQuestions);
+
     }
 
+    static void AskQuestions(Stack<Question> questions)
+    {
+        while(questions.Count > 0)
+        {
+            Question Question = questions.Peek();
+
+            double Answer = ObtainAnswer(Question);
+
+
+
+            // Determine if answer is correct or not
+            if (Answer == Question.Result)
+            {
+                //correct
+                Console.WriteLine("Correct");
+                Console.ReadLine();
+            }
+            else
+            {
+                //false
+                Console.WriteLine("False");
+                Console.ReadLine();
+            }
+
+            questions.Pop();
+        }
+    }
+
+    static double ObtainAnswer(Question question)
+    {
+        DisplayQuestion(question);
+        Console.Write("Answer = ");
+
+        string answer = Console.ReadLine();
+        bool valid = double.TryParse(answer, out double number);
+
+        // Check if answer is a valid number
+        while (!valid)
+        {
+            // If not ask question again
+            DisplayQuestion(question);
+            Console.WriteLine("Please enter numbers only such as '42'");
+            Console.Write("Answer = ");
+            answer = Console.ReadLine();
+            valid = double.TryParse(answer, out number);
+        }
+
+        return number;
+    }
+
+    static void DisplayQuestion(Question question)
+    {
+        // Clear previous question
+        Console.Clear();
+
+        // Ask question
+        Console.WriteLine("Question:");
+        Console.WriteLine("{0} {1} {2}", question.Num1, question.Operator1, question.Num2);
+    }
+    
 }
