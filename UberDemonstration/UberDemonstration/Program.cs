@@ -71,7 +71,6 @@ public struct Customer
     public int CO2;
 
     private static string[] names = { "John", "Alice", "David", "Emily", "Michael", "Sophia", "William", "Olivia" };
-
     private static Random random = new Random();
 
     public Customer(LondonBorough borough)
@@ -98,10 +97,10 @@ class Program
         }
         Console.WriteLine("");
 
+
         //minimum C02
         LondonBorough minBorough = LondonBorough.Barking_and_Dagenham;
-        int minCO2 = 101; //C02 Is between 0 - 100 and so will always be smaller
-
+        int minCO2 = 501; //C02 Is between 0 - 100 and so will always be smaller
         //Go through each borough create a team //Create a set of 5 customers for each enum team
         List<Team> teams = new List<Team>();
         foreach (LondonBorough borough in boroughs)
@@ -114,11 +113,12 @@ class Program
             //Compare each team lowest = winner
             if (team.TotalCO2 < minCO2)
             {
+                Console.WriteLine("swap");
                 minCO2 = team.TotalCO2;
                 minBorough = team.TeamBorough;
             }
         }
-
+        
         Console.WriteLine($"The Winner Is: {minBorough}");
     }
 }
