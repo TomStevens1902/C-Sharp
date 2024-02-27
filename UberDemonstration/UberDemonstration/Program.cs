@@ -1,8 +1,8 @@
-﻿
-//enum of boroughs
-using System;
-using System.Runtime.CompilerServices;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
+//enum of boroughs
 public enum LondonBorough
 {
     Barking_and_Dagenham,
@@ -99,7 +99,7 @@ class Program
         Console.WriteLine("");
 
         //minimum C02
-        Team minTeam;
+        LondonBorough minBorough = LondonBorough.Barking_and_Dagenham;
         int minCO2 = 101; //C02 Is between 0 - 100 and so will always be smaller
 
         //Go through each borough create a team //Create a set of 5 customers for each enum team
@@ -115,10 +115,10 @@ class Program
             if (team.TotalCO2 < minCO2)
             {
                 minCO2 = team.TotalCO2;
-                minTeam = team;
+                minBorough = team.TeamBorough;
             }
         }
 
-        Console.WriteLine($"The Winner Is: {minTeam.TeamBorough}");
+        Console.WriteLine($"The Winner Is: {minBorough}");
     }
 }
