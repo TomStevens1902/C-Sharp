@@ -1,6 +1,7 @@
 ﻿
 //enum of boroughs
 using System;
+using System.Runtime.CompilerServices;
 
 public enum LondonBorough
 {
@@ -43,7 +44,7 @@ public struct Team
 {
     public LondonBorough TeamBorough;
     List<Customer> CustomerList = new List<Customer>();
-    int TotalCO2 = 0;
+    public int TotalCO2 = 0;
 
     public Team(LondonBorough team)
     {
@@ -55,6 +56,8 @@ public struct Team
             Customer customer = new Customer(TeamBorough);
             Console.WriteLine($"Name: {customer.Name} \t Borough: {TeamBorough} \t CO2: {customer.CO2}");
             CustomerList.Add(customer);
+
+            //Calculate an overall CO2 for each team
             TotalCO2 += customer.CO2;
         }
     }
@@ -95,20 +98,27 @@ class Program
         }
         Console.WriteLine("");
 
+        //minimum C02
+        Team minTeam;
+        int minCO2 = 101; //C02 Is between 0 - 100 and so will always be smaller
+
         //Go through each borough create a team //Create a set of 5 customers for each enum team
         List<Team> teams = new List<Team>();
         foreach (LondonBorough borough in boroughs)
         {
             Team team = new Team(borough);
             teams.Add(team);
+            Console.WriteLine($"Total C02: {team.TotalCO2}");
             Console.WriteLine("");
+
+            //Compare each team lowest = winner
+            if (team.TotalCO2 < minCO2)
+            {
+                minCO2 = team.TotalCO2;
+                minTeam = team;
+            }
         }
-        
 
-        //Calculate an overall CO2 for each team
-
-        //Compare each team lowest = winner
-
-        //Display team info and winner
+        Console.WriteLine($"The Winner Is: {minTeam.TeamBorough}");
     }
 }
